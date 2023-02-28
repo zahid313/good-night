@@ -4,6 +4,9 @@ class SleepRecord < ApplicationRecord
 
   validate :valid_sleep_period
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["start_time", "end_time"]
+  end  
   private
 
   def valid_sleep_period

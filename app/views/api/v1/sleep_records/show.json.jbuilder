@@ -1,0 +1,1 @@
+json.partial! 'api/v1/sleep_records/sleep_record', sleep_record: @sleep_record
