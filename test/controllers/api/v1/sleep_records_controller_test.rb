@@ -4,6 +4,7 @@ class Api::V1::SleepRecordsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
     @sleep_record = sleep_records(:one)
+    @sleep_record4 = sleep_records(:four)
     @valid_sleep_record_params = { start_time: Time.zone.now, end_time: Time.zone.now + 8.hours }
     @invalid_sleep_record_params = { start_time: Time.zone.now, end_time: Time.zone.now - 8.hours }
   end
@@ -21,7 +22,7 @@ class Api::V1::SleepRecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sleep record" do
-    patch api_v1_sleep_record_url(@sleep_record), params: { sleep_record: @valid_sleep_record_params, user_id: @user.id }, as: :json
+    patch api_v1_sleep_record_url(@sleep_record4), params: { sleep_record: @valid_sleep_record_params, user_id: @user.id }, as: :json
     assert_response :success
   end
 

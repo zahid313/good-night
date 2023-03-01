@@ -43,6 +43,10 @@ group :development do
   # gem "spring"
 end
 
+group :test do 
+  gem "rails-controller-testing"
+end
+
 
 gem "ransack", "~> 4.0"
 
