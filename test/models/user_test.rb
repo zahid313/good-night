@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "John Doe")
+    @user = User.create(name: "John Doe")
   end
 
   test "should be valid" do
@@ -26,7 +26,7 @@ class UserTest < ActiveSupport::TestCase
     user1 = users(:one)
     user2 = users(:two)
 
-    assert_difference 'user1.following.count', 1 do
+    assert_difference 'user1.followings.count', 1 do
       Follow.create(follower: user1, following: user2, approved: true)
     end
 
@@ -43,5 +43,36 @@ class UserTest < ActiveSupport::TestCase
 
     assert_includes user1.active_follows, follow
     assert_includes user2.passive_follows, follow
+  end  
+
+  test "friends_sleep_records should return sleep records of friends" do
+    friend1 = users(:two)
+    friend2 = users(:three)
+    friend3 = users(:four)
+    sleep_record1 = sleep_records(:one)
+    sleep_record2 = sleep_records(:two)
+    sleep_record3 = sleep_records(:three)
+    sleep_record4 = sleep_records(:four)
+    sleep_record5 = sleep_records(:five)
+    sleep_record6 = sleep_records(:six)
+    sleep_record7 = sleep_records(:seven)
+    sleep_record8 = sleep_records(:eight)
+
+    # Create follow records
+    Follow.create(follower_id: @user.id, following_id: friend1.id, approved: true)
+    Follow.create(follower_id: @user.id, following_id: friend2.id, approved: true)
+    Follow.create(follower_id: @user.id, following_id: friend3.id, approved: true)
+    # Assign sleep records to friends
+    friend1.sleep_records << [sleep_record1, sleep_record2]
+    friend2.sleep_records << [sleep_record3, sleep_record4, sleep_record5]
+    friend3.sleep_records << [sleep_record6, sleep_record7, sleep_record8]
+
+    # Assert that the method returns the correct sleep records
+    assert_equal @user.friend_sleep_records.map(&:id).sort, [sleep_record1, sleep_record2, sleep_record3,
+      sleep_record4, sleep_record5,sleep_record6,sleep_record7,sleep_record8].map(&:id).sort
+  end
+
+  test "friends_sleep_records should return empty array when user has no friends" do
+    assert_equal @user.friend_sleep_records.to_a, []
   end  
 end

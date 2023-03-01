@@ -1,11 +1,43 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+jane:
+  start_time: <%= 1.day.ago %>
+  end_time: <%= 12.hours.ago %>
+  user: jane
 one:
-  user: one
-  start_time: 2023-02-27 22:25:34
-  end_time: 2023-02-27 22:25:34
-
-two:
+  start_time: <%= 1.day.ago %>
+  end_time: <%= 12.hours.ago %>
   user: two
-  start_time: 2023-02-27 22:25:34
-  end_time: 2023-02-27 22:25:34
+  
+two:
+  start_time: <%= 1.day.ago %>
+  end_time: <%= 8.hours.ago %>
+  user: three
+  
+three:
+  start_time: <%= 2.days.ago %>
+  end_time: <%= 1.day.ago %>
+  user: four
+  
+four:
+  start_time: <%= 2.days.ago %>
+  end_time: <%= 1.day.ago %>
+  user: one
+  
+five:
+  start_time: <%= 3.days.ago %>
+  end_time: <%= 2.days.ago %>
+  user: two
+  
+six:
+  start_time: <%= 3.days.ago %>
+  end_time: <%= 2.days.ago %>
+  user: three
+  
+seven:
+  start_time: <%= 4.days.ago %>
+  end_time: <%= 3.days.ago %>
+  user: four
+  
+eight:
+  start_time: <%= 4.days.ago %>
+  end_time: <%= 3.days.ago %>
+  user: two  
