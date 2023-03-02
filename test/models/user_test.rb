@@ -22,18 +22,24 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test "following and followers association is updated when a user follows another user" do
+  test "following association is updated when a user follows another user" do
     user1 = users(:one)
     user2 = users(:two)
 
     assert_difference 'user1.followings.count', 1 do
       Follow.create(follower: user1, following: user2, approved: true)
     end
+    
+  end
+
+  test "followers association is updated when a user follows another user" do
+    user1 = users(:one)
+    user2 = users(:two)
 
     assert_difference 'user2.followers.count', 1 do
       Follow.create(follower: user1, following: user2, approved: true)
     end
-  end
+  end  
 
   test "active_follows and passive_follows associations are updated when a user follows another user" do
     user1 = users(:one)
