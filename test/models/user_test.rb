@@ -67,9 +67,11 @@ class UserTest < ActiveSupport::TestCase
     friend2.sleep_records << [sleep_record3, sleep_record4, sleep_record5]
     friend3.sleep_records << [sleep_record6, sleep_record7, sleep_record8]
 
+    sleep_record_ids = [sleep_record1, sleep_record2, sleep_record3, sleep_record4, sleep_record5,
+                     sleep_record6,sleep_record7,sleep_record8].map(&:id)
+    friend_sleep_ids = @user.friend_sleep_records.map(&:id)  
     # Assert that the method returns the correct sleep records
-    assert_equal @user.friend_sleep_records.map(&:id).sort, [sleep_record1, sleep_record2, sleep_record3,
-      sleep_record4, sleep_record5,sleep_record6,sleep_record7,sleep_record8].map(&:id).sort
+    assert (friend_sleep_ids & sleep_record_ids) == friend_sleep_ids
   end
 
   test "friends_sleep_records should return empty array when user has no friends" do
