@@ -1,5 +1,5 @@
 class Api::V1::BaseController < ApplicationController
-    # rescue_from StandardError, with: :server_error
+    rescue_from StandardError, with: :server_error
     rescue_from ActiveRecord::RecordNotFound, with: :not_found
     rescue_from ActionController::ParameterMissing, with: :bad_request
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
@@ -21,7 +21,6 @@ class Api::V1::BaseController < ApplicationController
     def server_error(exception)
         # Log the exception for debugging purposes
         Rails.logger.error exception.message
-        Rails.logger.error exception.backtrace.join("\n")
         render json: { error: 'Something went wrong on the server' }, status: :internal_server_error
     end
 
