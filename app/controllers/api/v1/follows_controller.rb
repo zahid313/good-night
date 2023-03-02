@@ -8,7 +8,6 @@ module Api
       def create
         @follow = current_user.active_follows.build(following: @user)
         @follow.save!
-        render 'show'
       end
 
       def destroy
