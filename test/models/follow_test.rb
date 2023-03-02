@@ -38,4 +38,12 @@ class FollowTest < ActiveSupport::TestCase
     @follow.reject
     assert_nil @follow.id
   end
+
+  test 'should not allow user to follow same user more than once' do
+    user1 = users(:one)
+    user2 = users(:two)
+    Follow.create(follower_id: user1.id, following_id: user2.id)
+    follow = Follow.new(follower_id: user1.id, following_id: user2.id)
+    assert_not follow.valid?, 'Should not be able to follow the same user more than once'
+  end  
 end
