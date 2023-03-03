@@ -29,7 +29,9 @@
 
 5. View the documentation
 
-    Documentation can be viewed by visiting localhost:3000/api-docs.html
+        Documentation can be viewed by visiting localhost:3000/api-docs.html
+
+5. Postman Collection has been included as well.     
 
 6. To stop the containers, use the following command
 
