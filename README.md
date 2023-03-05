@@ -1,3 +1,6 @@
+# Good Night
+Good Night is a social network for sleep tracking. Users can create sleep records, follow other users, and view their friends' sleep records.
+
 # Setting up the Good Night API with Docker
 
 ## Prerequisites
@@ -58,6 +61,32 @@ The **docker-compose.yml** file has the configurations for the following service
 ## Conclusion
 
 This project is set up with Docker, which makes it easy to run the application in different environments. The above steps should help you in setting up the project on your machine. In case of any issues or if you have any questions, please feel free to reach out to the project maintainers.
+
+
+## Usage
+
+Once the server is running, you can access the Good Night API at http://localhost:3000/api/v1.
+
+The API has the following endpoints:
+
+    /users: CRUD operations for users.
+    /sleep_records: CRUD operations for sleep records.
+    /follows: CRUD operations for follows.
+    /friend_sleep_records: View the sleep records of a user's friends.
+
+For more information on using the API, see the documentation at http://localhost:3000/api-docs.
+
+
+## Contributing
+
+If you'd like to contribute to Good Night, please follow these steps:
+
+    1. Fork the repository.
+    2. Create a new branch for your changes.
+    3. Make your changes and write tests for them.
+    4. Push your changes to your fork.
+    5. Create a pull request.
+
 
 Happy Development
 
