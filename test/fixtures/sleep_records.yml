@@ -20,24 +20,29 @@ three:
 four:
   start_time: <%= 2.days.ago %>
   end_time: <%= 1.day.ago %>
+  duration: 240
   user: one
   
 five:
   start_time: <%= 3.days.ago %>
   end_time: <%= 2.days.ago %>
+  duration: 340
   user: two
   
 six:
   start_time: <%= 3.days.ago %>
   end_time: <%= 2.days.ago %>
+  duration: 440
   user: three
   
 seven:
   start_time: <%= 4.days.ago %>
   end_time: <%= 3.days.ago %>
+  duration: 140
   user: four
   
 eight:
   start_time: <%= 4.days.ago %>
   end_time: <%= 3.days.ago %>
+  duration: 330
   user: two  
